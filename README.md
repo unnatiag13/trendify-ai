@@ -60,7 +60,8 @@ trendify-ai/
 ├── .env                 # API key (not pushed to GitHub)
 ├── package.json         # Dependencies & scripts
 ├── tailwind.config.js   # Tailwind setup
-└── README.md            # Documentation
+└── README.md            # Documentation 
+```
 
 💻 6. Implementation Details
 Core Functionalities:
