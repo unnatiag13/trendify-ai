@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+# 🛍 Trendify AI – Virtual Shopping Assistant  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Background  
+In today’s world of e-commerce, customers face challenges in choosing products that match their style, budget, and preferences. While online stores provide massive catalogs, they lack personalized guidance.  
+To address this gap, we developed *Trendify AI*, a virtual shopping assistant powered by AI.  
+It combines *LLMs (Google Gemini API)* with a modern frontend to deliver a personalized, engaging, and efficient shopping experience.  
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 2. Problem Statement  
+Shoppers often:  
+- Spend time browsing large product catalogs.  
+- Struggle to compare options within budget.  
+- Miss discounts or coupons.  
+- Lack interactive support while shopping online.  
 
-### `npm start`
+Our solution: *an AI-driven assistant* that recommends products, manages carts/wishlists, applies coupons, and engages in real-time conversation with the user.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 3. Approach  
 
-### `npm test`
+1. *Conversation & Information Gathering* – The chatbot engages with the user to understand preferences (budget, product category, style, etc.).  
+2. *Information Extraction* – Extracts structured information from user queries using Gemini AI.  
+3. *Personalized Recommendation* – Suggests relevant products via the Fake Store API.  
+4. *Shopping Experience* – Supports cart, wishlist, coupon discounts, and voice input for hands-free queries.  
+5. *Modern UI* – Provides an interactive React + TailwindCSS interface with smooth animations (Framer Motion).  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 4. System Functionalities  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- *Product Search* – Browse and search items from Fake Store API.  
+- *Cart System* – Add/remove/update items with live total calculation.  
+- *Wishlist* – Save liked products.  
+- *Coupons* – Apply predefined discounts (SAVE10, SAVE20).  
+- *AI Chat Assistant* – Powered by Google Gemini API for conversational shopping help.  
+- *Voice Input* – Users can speak queries directly.  
+- *UI/UX* – TailwindCSS + Framer Motion animations for a modern experience.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 5. System Architecture  
 
-### `npm run eject`
+Trendify AI follows a *client-side React application architecture*:  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- *Frontend (React + TailwindCSS)* – Provides user interface and handles user interactions.  
+- *Gemini AI API* – Powers natural conversation, query understanding, and recommendations.  
+- *Fake Store API* – Supplies product data for browsing and recommendations.  
+- *Environment Config (.env)* – Stores API keys securely.  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```plaintext
+trendify-ai/
+├── public/              # Static assets (index.html, manifest.json, favicon)
+├── src/                 # React components, styles, logic
+│   ├── App.js           # Main React component
+│   ├── index.js         # Entry point
+│   ├── index.css        # Tailwind & custom CSS
+│   ├── App.css          # Component styling
+├── .env                 # API key (not pushed to GitHub)
+├── package.json         # Dependencies & scripts
+├── tailwind.config.js   # Tailwind setup
+└── README.md            # Documentation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+💻 6. Implementation Details
+Core Functionalities:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> App.js – Main component integrating product listing, cart, wishlist, and chat.
+> Chat Component – Handles user input, voice recognition, and Gemini API responses.
+> Cart Component – Manages add/remove/update logic with total calculation.
+> Coupon Function – Validates and applies discounts.
+> Tailwind + Framer Motion – Provides styling and animation.
 
-## Learn More
+Major Functions:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> handleAddToCart() → Adds products to cart
+> handleRemoveFromCart() → Removes items
+> applyCoupon() → Applies discount codes
+> handleChat() → Sends messages to Gemini API and receives responses
+> handleVoiceInput() → Converts speech to text for queries
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+⚙ 7. Installation & Setup
 
-### Code Splitting
+8. Setup
+8.1. Clone the repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+git clone https://github.com/<your-username>/trendify-ai.git
 
-### Analyzing the Bundle Size
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+npm install
 
-### Making a Progressive Web App
+8.2. Set up environment variables
+Create a .env file in the root directory and add your Google Gemini API key:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+REACT_APP_GOOGLE_API_KEY=your_api_key_here
 
-### Advanced Configuration
+8.3. Start the development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+npm start
 
-### Deployment
+8.4. Open your browser and visit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+http://localhost:3000
 
-### `npm run build` fails to minify
+📖 9. About
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A conversational AI Virtual Shopping Assistant that helps users browse products, manage carts, apply discounts, and interact with an AI assistant for better shopping experiences.
+
+🏷 10. Topics
+
+react · tailwindcss · framer-motion · gemini-api · shopping-cart · wishlist · ai-chatbot
+
+11. Resources
+
+> Fake Store API
+> Google Gemini API
+> TailwindCSS Docs
+> Framer Motion Docs
+
+⭐ Contribution & Support
+
+If you like this project, give it a ⭐ on GitHub!
+Contributions are welcome — feel free to fork the repo and submit a PR.
+
+### 🏠 Home Page
+![Home Page](images/home.png)
+
+### 🔍 Product Browsing
+![Product Browsing](images/browse.png)
+
+### 🛒 Cart System
+![Cart](images/cart.png)
+
+### 🤖 AI Chat Assistant
+![AI Chat](images/ai-chat1.png)
+![AI Chat 2](images/ai-chat2.png)
