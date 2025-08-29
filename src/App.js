@@ -19,10 +19,6 @@ function App() {
   const [likes, setLikes] = useState({});
   const [search, setSearch] = useState("");
   const [aiMessages, setAiMessages] = useState([
-    {
-      role: "system",
-      text: " Suggest websites quickly.",
-    },
     { role: "assistant", text: "Hi 👋 I'm your shopping assistant!" },
   ]);
   const [aiInput, setAiInput] = useState("");
@@ -108,12 +104,13 @@ Always reply in a clear and helpful tone, like a shop assistant who knows the ma
 
 Guidelines:
 - Suggest a few specific product options (2–4) instead of vague answers.
-- Provide direct links from Amazon, Flipkart, Myntra, or Nykaa where relevant.
+- Provide direct links from Amazon, Flipkart, Myntra, Meesho, Savana , Ajio or Nykaa where relevant.
 - Always include the price (approximate if needed), and mention one or two key features (like material, size options, durability, style, or ratings).
 - When comparing, highlight differences (e.g., price, quality, style, delivery).
 - Never ask the user questions back; just give useful suggestions straight away.
 - Do not use bold, italics, or asterisks formatting.
-- Keep responses short, practical, and user-friendly. 
+- Keep responses short, practical, and user-friendly.
+- if user asks questions unrelated to kindly redirect the question and refrain from answer shopping unrelated question 
 
 User query: "${aiInput}"`;
 
