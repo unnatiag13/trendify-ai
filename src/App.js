@@ -11,9 +11,6 @@ import {
 import axios from "axios";
 
 function App() {
-  const apiKey = process.env.REACT_APP_GOOGLE_API_KEY; // ✅ Uses .env API key
-  console.log("🔑 API Key:", apiKey); // Debug log
-
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [likes, setLikes] = useState({});
@@ -38,16 +35,19 @@ function App() {
   // Cart operations
   const addToCart = (product) => {
     const existing = cart.find((p) => p.id === product.id);
-    if (existing)
+    if (existing) {
       setCart(
         cart.map((p) =>
           p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
         )
       );
-    else setCart([...cart, { ...product, quantity: 1 }]);
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   };
 
   const removeFromCart = (id) => setCart(cart.filter((p) => p.id !== id));
+
   const changeQuantity = (id, delta) =>
     setCart(
       cart.map((p) =>
@@ -56,6 +56,7 @@ function App() {
           : p
       )
     );
+
   const toggleLike = (id) => setLikes({ ...likes, [id]: !likes[id] });
 
   const cartTotal = cart.reduce((sum, p) => sum + p.price * p.quantity, 0);
@@ -98,7 +99,8 @@ function App() {
   // AI chat
   const sendAI = async () => {
     if (!aiInput.trim()) return;
-    const prompt =  `You are a friendly and knowledgeable online shopping assistant. 
+
+    const prompt = `You are a friendly and knowledgeable online shopping assistant. 
 Your job is to help the user quickly find the best products for their needs. 
 Always reply in a clear and helpful tone, like a shop assistant who knows the market well. 
 
@@ -111,6 +113,7 @@ Guidelines:
 - Do not use bold, italics, or asterisks formatting.
 - Keep responses short, practical, and user-friendly.
 - if user asks questions unrelated to kindly redirect the question and refrain from answer shopping unrelated question 
+- don't provide links to products
 
 User query: "${aiInput}"`;
 
@@ -120,16 +123,13 @@ User query: "${aiInput}"`;
 
     try {
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, // ✅ switched to valid model
-        { contents: [{ parts: [{ text: prompt }] }] },
-        { headers: { "Content-Type": "application/json" } }
+        "http://localhost:5000/api/ai", // ✅ call backend
+        { prompt }
       );
 
       console.log("🤖 Full Gemini API response:", response.data);
 
-      let aiText =
-        response.data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "No response";
+      let aiText = response.data.reply || "No response";
 
       // 🔹 remove asterisks formatting
       aiText = aiText.replace(/\*/g, "").trim();
@@ -142,8 +142,7 @@ User query: "${aiInput}"`;
         { role: "assistant", text: "Error fetching AI" },
       ]);
     }
-  };
-
+  }; // ✅ this closing brace was missing before
 
   return (
     <div className="min-h-screen relative bg-gradient-to-br from-lavender-100 to-white p-4 overflow-x-hidden">
