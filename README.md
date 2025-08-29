@@ -135,3 +135,29 @@ Contributions are welcome — feel free to fork the repo and submit a PR.
 
 ### 🤖 AI Chat Assistant
 ![AI Chat](images/ai-chat1.png)
+
+## 🌐 Backend Branch
+
+Alongside the main frontend application, there is a dedicated **backend branch** that contains isolated backend code.
+
+### Purpose of Backend Branch
+- Provides a **Node.js + Express server** for API handling.  
+- Allows **secure API key management** (instead of exposing keys in frontend).  
+- Handles requests to **Gemini API** and forwards responses to the frontend.  
+- Can be extended for future features like authentication, database integration, and advanced product management.  
+
+### Usage
+The backend branch is separate from the main branch to keep codebases clean.  
+
+Developers can switch to it when working on server-side logic:  
+```bash
+git checkout backend
+```
+Run backend locally (example):
+```
+npm install
+npm run server
+```
+
+⚡ This ensures the frontend (main branch) and backend (backend branch) remain isolated but can be integrated when needed.
+
