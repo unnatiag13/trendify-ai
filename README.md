@@ -135,7 +135,6 @@ Contributions are welcome — feel free to fork the repo and submit a PR.
 
 ### 🤖 AI Chat Assistant
 ![AI Chat](images/ai-chat1.png)
-![AI Chat 2](images/ai-chat2.png)
 
 
 ---
