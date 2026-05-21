@@ -123,7 +123,7 @@ User query: "${aiInput}"`;
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/ai", // ✅ call backend
+        "https://trendify-backend-y0x6.onrender.com", // ✅ call backend
         { prompt }
       );
 
