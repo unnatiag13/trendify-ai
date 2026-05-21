@@ -136,6 +136,9 @@ Contributions are welcome — feel free to fork the repo and submit a PR.
 ### 🤖 AI Chat Assistant
 ![AI Chat](images/ai-chat1.png)
 
+
+---
+
 ## 🌐 Backend Branch
 
 Alongside the main frontend application, there is a dedicated **backend branch** that contains isolated backend code.
