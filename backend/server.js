@@ -10,6 +10,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Backend working");
+});
+
 app.post("/api/ai", async (req, res) => {
   try {
     const { prompt } = req.body;
