@@ -12,7 +12,7 @@ import axios from "axios";
 
 function App() {
   const apiKey = process.env.REACT_APP_GOOGLE_API_KEY; // ✅ Uses .env API key
-  console.log("🔑 API Key:", apiKey); // Debug log
+  // console.log("🔑 API Key:", apiKey); // Debug log
 
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -120,7 +120,7 @@ User query: "${aiInput}"`;
 
     try {
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, // ✅ switched to valid model
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, // ✅ switched to valid model
         { contents: [{ parts: [{ text: prompt }] }] },
         { headers: { "Content-Type": "application/json" } }
       );
